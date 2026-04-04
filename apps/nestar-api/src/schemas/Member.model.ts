@@ -71,17 +71,22 @@ const MemberSchema = new Schema(
 			default: 0,
 		},
 
-		memberFollowings: {
+		memberFollowing: {
 			type: Number,
 			default: 0,
 		},
 
-		memberPoint: {
+		memberPoints: {
 			type: Number,
 			default: 0,
 		},
 
 		memberViews: {
+			type: Number,
+			default: 0,
+		},
+
+		memberLikes: {
 			type: Number,
 			default: 0,
 		},
@@ -101,7 +106,7 @@ const MemberSchema = new Schema(
 			default: 0,
 		},
 
-		memberBlock: {
+		memberBlocks: {
 			type: Number,
 			default: 0,
 		},

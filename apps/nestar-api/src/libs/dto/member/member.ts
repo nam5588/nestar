@@ -46,13 +46,16 @@ export class Member {
 	memberFollowers: number;
 
 	@Field(() => Int)
-	memberFollowings: number;
+	memberFollowing: number;
 
 	@Field(() => Int)
-	memberPoint: number;
+	memberPoints: number;
 
 	@Field(() => Int)
 	memberViews: number;
+
+	@Field(() => Int)
+	memberLikes: number;
 
 	@Field(() => Int)
 	memberComments: number;
@@ -64,7 +67,7 @@ export class Member {
 	memberWarnings: number;
 
 	@Field(() => Int)
-	memberBlock: number;
+	memberBlocks: number;
 
 	@Field(() => Date, { nullable: true })
 	deletedAt?: Date;
