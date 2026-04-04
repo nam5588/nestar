@@ -20,7 +20,7 @@ import { DatabaseModule } from './database/database.module';
 		ComponentsModule,
 		DatabaseModule,
 	],
-	controllers: [AppController],
+	controllers: [AppController], // olib tashlash ham mumkin faqat biz buni test qilish maqsadida qoldirdik
 	providers: [AppService, AppResolver],
 })
 export class AppModule {}
