@@ -12,10 +12,10 @@ import { DatabaseModule } from './database/database.module';
 	imports: [
 		ConfigModule.forRoot(),
 		GraphQLModule.forRoot({
-			driver: ApolloDriver,
-			playground: true,
-			uploads: false,
-			autoSchemaFile: true,
+			driver: ApolloDriver, // Query va Muationni ochib beryabdi
+			playground: true, // ...3003/graphql da playgrounda ochadi
+			uploads: false, // file yuklamaydigan qildik
+			autoSchemaFile: true, // NestJS avtomatik GraphQL schema yaratadi va .gql file yozish shart emas
 		}),
 		ComponentsModule,
 		DatabaseModule,
