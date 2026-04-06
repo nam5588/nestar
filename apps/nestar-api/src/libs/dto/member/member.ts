@@ -19,7 +19,7 @@ export class Member {
 	@Field(() => String)
 	memberPhone: string;
 
-	@Field(() => Int)
+	@Field(() => String)
 	memberNick: string;
 
 	memberPassword?: string;
