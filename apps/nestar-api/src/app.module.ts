@@ -14,7 +14,7 @@ import { T } from './libs/types/common';
 		ConfigModule.forRoot(),
 		GraphQLModule.forRoot({
 			driver: ApolloDriver, // Query va Muationni ochib beryabdi
-			playground: true, // ...3003/graphql da playgrounda ochadi
+			playground: true, // ...3007/graphql da playgrounda ochadi
 			uploads: false, // file yuklamaydigan qildik
 			autoSchemaFile: true, // NestJS avtomatik GraphQL schema yaratadi va .gql file yozish shart emas
 			formatError: (error: T) => {
