@@ -17,7 +17,7 @@ export class AuthService {
 	public async comparePassword(password: string, hashedPassword: string): Promise<boolean> {
 		return await bcrypt.compare(password, hashedPassword);
 	}
-
+	// member > token (string)
 	public async createToken(member: Member): Promise<string> {
 		const payload: T = {};
 
@@ -28,7 +28,7 @@ export class AuthService {
 
 		return await this.jwtService.signAsync(payload);
 	}
-
+	// token (string) > member
 	public async verifyToken(token: string): Promise<Member> {
 		const member = await this.jwtService.verifyAsync(token);
 		member._id = shapeIntoMongoObjectId(member._id);
