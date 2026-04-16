@@ -1,73 +1,71 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { ObjectId } from 'mongoose';
-import { MemberAuthType, MemberStatus, MemberType } from '../../enums/member.enum';
+import { PropertyLocation, PropertyStatus, PropertyType } from '../../enums/property.enum';
 
 @ObjectType()
-export class Member {
+export class Property {
 	@Field(() => String)
 	_id: ObjectId;
 
-	@Field(() => MemberType)
-	memberType: MemberType;
+	@Field(() => PropertyType)
+	propertyType: PropertyType;
 
-	@Field(() => MemberStatus)
-	memberStatus: MemberStatus;
+	@Field(() => PropertyStatus)
+	propertyStatus: PropertyStatus;
 
-	@Field(() => MemberAuthType)
-	memberAuthType: MemberAuthType;
-
-	@Field(() => String)
-	memberPhone: string;
+	@Field(() => PropertyLocation)
+	propertyLocation: PropertyLocation;
 
 	@Field(() => String)
-	memberNick: string;
-
-	memberPassword?: string;
-
-	@Field(() => String, { nullable: true })
-	memberFullName?: string;
+	propertyAddress: string;
 
 	@Field(() => String)
-	memberImage: string;
+	propertyTitle: string;
+
+	@Field(() => Number)
+	propertyPrice: number;
+
+	@Field(() => Number)
+	propertySquare: number;
+
+	@Field(() => Int)
+	propertyBeds: number;
+
+	@Field(() => Int)
+	propertyRooms: number;
+
+	@Field(() => Int)
+	propertyViews: number;
+
+	@Field(() => Int)
+	propertyLikes: number;
+
+	@Field(() => Int)
+	propertyComments: number;
+
+	@Field(() => Int)
+	propertyRank: number;
+
+	@Field(() => [String])
+	propertyImages: string[];
 
 	@Field(() => String, { nullable: true })
-	memberAddress?: string;
+	propertyDesc?: string;
 
-	@Field(() => String, { nullable: true })
-	memberDesc?: string;
+	@Field(() => Boolean)
+	propertyBarter: boolean;
 
-	@Field(() => Int)
-	memberProperties: number;
+	@Field(() => Boolean)
+	propertyRent: boolean;
 
-	@Field(() => Int)
-	memberArticles: number;
+	@Field(() => String)
+	memberId: string;
 
-	@Field(() => Int)
-	memberFollowers: number;
+	@Field(() => Date, { nullable: true })
+	soldAt?: Date;
 
-	@Field(() => Int)
-	memberFollowings: number;
-
-	@Field(() => Int)
-	memberPoints: number;
-
-	@Field(() => Int)
-	memberViews: number;
-
-	@Field(() => Int)
-	memberLikes: number;
-
-	@Field(() => Int)
-	memberComments: number;
-
-	@Field(() => Int)
-	memberRank: number;
-
-	@Field(() => Int)
-	memberWarnings: number;
-
-	@Field(() => Int)
-	memberBlocks: number;
+	@Field(() => Date, { nullable: true })
+	constructedAt?: string;
 
 	@Field(() => Date, { nullable: true })
 	deletedAt?: Date;
@@ -77,22 +75,4 @@ export class Member {
 
 	@Field(() => Date)
 	updatedAt: Date;
-
-	@Field(() => String, { nullable: true })
-	accessToken?: string;
-}
-
-@ObjectType()
-export class TotalCounter {
-	@Field(() => Int, { nullable: true })
-	total: number;
-}
-
-@ObjectType()
-export class Members {
-	@Field(() => [Member])
-	list: Member[];
-
-	@Field(() => [TotalCounter], { nullable: true })
-	metaCounter: TotalCounter[];
 }

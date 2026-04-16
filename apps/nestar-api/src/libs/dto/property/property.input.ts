@@ -1,117 +1,68 @@
 import { Field, InputType, Int } from '@nestjs/graphql';
-import { IsIn, IsNotEmpty, IsOptional, Length, Min } from 'class-validator';
-import { MemberAuthType, MemberStatus, MemberType } from '../../enums/member.enum';
-import { aviableAgentSorts, aviableMemberSorts } from '../../config';
-import { Direction } from '../../enums/common.enum';
+import { PropertyLocation, PropertyType } from '../../enums/property.enum';
+import { IsInt, IsNotEmpty, IsOptional, Length, Min } from 'class-validator';
+import { ObjectId } from 'mongoose';
 
 @InputType()
-export class MemberInput {
+export class PropertyInput {
 	@IsNotEmpty()
-	@Length(3, 12)
+	@Field(() => PropertyType)
+	propertyType: PropertyType;
+
+	@IsNotEmpty()
+	@Field(() => PropertyLocation)
+	propertyLocation: PropertyLocation;
+
+	@IsNotEmpty()
+	@Length(3, 100)
 	@Field(() => String)
-	memberNick: string;
+	propertyAddress: string;
 
 	@IsNotEmpty()
-	@Length(5, 12)
+	@Length(3, 100)
 	@Field(() => String)
-	memberPassword: string;
+	propertyTitle: string;
 
 	@IsNotEmpty()
-	@Field(() => String)
-	memberPhone: string;
-
-	@IsOptional()
-	@Field(() => MemberType, { nullable: true })
-	memberType?: MemberType;
-
-	@IsOptional()
-	@Field(() => MemberAuthType, { nullable: true })
-	memberAuthType?: MemberAuthType;
-}
-
-@InputType()
-export class LoginInput {
-	@IsNotEmpty()
-	@Length(3, 12)
-	@Field(() => String)
-	memberNick: string;
+	@Field(() => Number)
+	propertyPrice: number;
 
 	@IsNotEmpty()
-	@Length(5, 12)
-	@Field(() => String)
-	memberPassword: string;
-}
+	@Field(() => Number)
+	propertySquare: number;
 
-@InputType()
-class AISearch {
-	@IsOptional()
-	@Field(() => String, { nullable: true })
-	text?: string;
-}
-
-@InputType()
-export class AgentsInquiry {
 	@IsNotEmpty()
+	@IsInt()
 	@Min(1)
 	@Field(() => Int)
-	limit: number;
+	propertyBeds: number;
 
 	@IsNotEmpty()
+	@IsInt()
 	@Min(1)
 	@Field(() => Int)
-	page: number;
+	propertyRooms: number;
+
+	@IsNotEmpty()
+	@Field(() => [String])
+	propertyImages: string[];
 
 	@IsOptional()
-	@IsIn(aviableAgentSorts)
+	@Length(5, 500)
 	@Field(() => String, { nullable: true })
-	sort?: string;
+	propertyDesc?: string;
 
 	@IsOptional()
-	@Field(() => Direction, { nullable: true })
-	direction?: Direction;
-
-	@IsNotEmpty()
-	@Field(() => AISearch)
-	search: AISearch;
-}
-
-@InputType()
-class MISearch {
-	@IsOptional()
-	@Field(() => MemberStatus, { nullable: true })
-	memberStatus?: MemberStatus;
+	@Field(() => Boolean, { nullable: true })
+	propertyBarter?: boolean;
 
 	@IsOptional()
-	@Field(() => MemberType, { nullable: true })
-	memberType?: MemberType;
+	@Field(() => Boolean, { nullable: true })
+	propertyRent?: boolean;
+
+	memberId?: ObjectId;
 
 	@IsOptional()
-	@Field(() => String, { nullable: true })
-	text?: string;
-}
-
-@InputType()
-export class MembersInquiry {
-	@IsNotEmpty()
-	@Min(1)
-	@Field(() => Int)
-	limit: number;
-
-	@IsNotEmpty()
-	@Min(1)
-	@Field(() => Int)
-	page: number;
-
-	@IsOptional()
-	@IsIn(aviableMemberSorts)
-	@Field(() => String, { nullable: true })
-	sort?: string;
-
-	@IsOptional()
-	@Field(() => Direction, { nullable: true })
-	direction?: Direction;
-
-	@IsNotEmpty()
-	@Field(() => MISearch)
-	search: MISearch;
+	@Field(() => Date, { nullable: true })
+	constructedAt?: string;
 }
