@@ -4,7 +4,7 @@ export interface T {
 	[key: string]: any;
 }
 export interface StatisticModifier {
-	_id: ObjectId;
+	_id: string | ObjectId;
 	targetKey: string;
 	modifier: number;
 }
