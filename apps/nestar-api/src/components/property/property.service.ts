@@ -228,11 +228,7 @@ export class PropertyService {
 		else if (propertyStatus === PropertyStatus.DELETE) deletedAt = moment().toDate();
 
 		const result = await this.propertyModel.findOneAndUpdate(search, input, { new: true }).exec();
-		console.log('1');
-		console.log('result:', result);
-
 		if (!result) throw new InternalServerErrorException(Message.UPDATE_FAILED);
-		console.log('2');
 
 		if (soldAt || deletedAt) {
 			await this.memberService.memberStatusEditor({
@@ -241,6 +237,14 @@ export class PropertyService {
 				modifier: -1,
 			});
 		}
+
+		return result;
+	}
+
+	public async removePropertyByAdmin(propertyId: ObjectId): Promise<Property> {
+		const search: T = { _id: propertyId, propertyStatus: PropertyStatus.DELETE };
+		const result = await this.propertyModel.findOneAndDelete(search).exec();
+		if (!result) throw new InternalServerErrorException(Message.REMOVE_FAILED);
 
 		return result;
 	}
