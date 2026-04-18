@@ -214,4 +214,34 @@ export class PropertyService {
 
 		return result[0];
 	}
+
+	public async updatePropertyByAdmin(input: PropertyUpdate): Promise<Property> {
+		const { propertyStatus } = input;
+		let { soldAt, deletedAt } = input;
+
+		const search: T = {
+			_id: input._id,
+			propertyStatus: PropertyStatus.ACTIVE,
+		};
+
+		if (propertyStatus === PropertyStatus.SOLD) soldAt = moment().toDate();
+		else if (propertyStatus === PropertyStatus.DELETE) deletedAt = moment().toDate();
+
+		const result = await this.propertyModel.findOneAndUpdate(search, input, { new: true }).exec();
+		console.log('1');
+		console.log('result:', result);
+
+		if (!result) throw new InternalServerErrorException(Message.UPDATE_FAILED);
+		console.log('2');
+
+		if (soldAt || deletedAt) {
+			await this.memberService.memberStatusEditor({
+				_id: result.memberId,
+				targetKey: 'memberProperties',
+				modifier: -1,
+			});
+		}
+
+		return result;
+	}
 }
