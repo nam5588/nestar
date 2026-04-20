@@ -2,6 +2,7 @@ import { ObjectId } from 'bson';
 
 export const aviableAgentSorts = ['createdAt', 'updatedAt', 'memberLikes', 'memberViews', 'memberRank'];
 export const aviableMemberSorts = ['createdAt', 'updatedAt', 'memberLikes', 'memberViews'];
+export const aviableArticleSorts = ['createdAt', 'updatedAt', 'articleLikes', 'articleViews'];
 
 export const aviableOptions = ['propertyBarter', 'propertyRent'];
 export const aviablePropertySorts = [
