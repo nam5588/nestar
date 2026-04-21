@@ -56,7 +56,7 @@ export class BoardArticleResolver {
 	@UseGuards(WithoutGuard)
 	@Query((returns) => BoardArticles)
 	public async getBoardArticles(
-		@Args('articleId') input: BoardArticlesInquiry,
+		@Args('input') input: BoardArticlesInquiry,
 		@AuthMember('_id') memberId: ObjectId,
 	): Promise<BoardArticles> {
 		console.log('Query: getBoardArticles');
@@ -78,24 +78,24 @@ export class BoardArticleResolver {
 	@Roles(MemberType.ADMIN)
 	@UseGuards(RolesGuard)
 	@Mutation((returns) => BoardArticle)
-	public async updateBoardArticlesByAdmin(
+	public async updateBoardArticleByAdmin(
 		@Args('input') input: BoardArticleUpdate,
 		@AuthMember('_id') memberId: ObjectId,
 	): Promise<BoardArticle> {
-		console.log('Mutation: updateBoardArticlesByAdmin');
+		console.log('Mutation: updateBoardArticleByAdmin');
 		input._id = shapeIntoMongoObjectId(input._id);
-		return await this.boardArticleService.updateBoardArticlesByAdmin(input);
+		return await this.boardArticleService.updateBoardArticleByAdmin(input);
 	}
 
 	@Roles(MemberType.ADMIN)
 	@UseGuards(RolesGuard)
 	@Mutation((returns) => BoardArticle)
-	public async removeBoardArticlesByAdmin(
+	public async removeBoardArticleByAdmin(
 		@Args('input') input: string,
 		@AuthMember('_id') memberId: ObjectId,
 	): Promise<BoardArticle> {
-		console.log('Mutation: removeBoardArticlesByAdmin');
+		console.log('Mutation: removeBoardArticleByAdmin');
 		const articleId = shapeIntoMongoObjectId(input);
-		return await this.boardArticleService.removeBoardArticlesByAdmin(articleId);
+		return await this.boardArticleService.removeBoardArticleByAdmin(articleId);
 	}
 }

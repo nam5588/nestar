@@ -154,7 +154,7 @@ export class BoardArticleService {
 		return result[0];
 	}
 
-	public async updateBoardArticlesByAdmin(input: BoardArticleUpdate): Promise<BoardArticle> {
+	public async updateBoardArticleByAdmin(input: BoardArticleUpdate): Promise<BoardArticle> {
 		const { _id, articleStatus } = input;
 
 		const result = await this.boardArticleModel
@@ -179,7 +179,7 @@ export class BoardArticleService {
 		return result;
 	}
 
-	public async removeBoardArticlesByAdmin(articleId: ObjectId): Promise<BoardArticle> {
+	public async removeBoardArticleByAdmin(articleId: ObjectId): Promise<BoardArticle> {
 		const search: T = { _id: articleId, articleStatus: BoardArticleStatus.DELETE };
 		const result = await this.boardArticleModel.findOneAndDelete(search).exec();
 		if (!result) throw new InternalServerErrorException(Message.REMOVE_FAILED);
