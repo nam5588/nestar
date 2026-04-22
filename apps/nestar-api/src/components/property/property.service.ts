@@ -188,7 +188,7 @@ export class PropertyService {
 		const input: LikeInput = {
 			memberId: memberId,
 			likeRefId: likeRefId,
-			likeGroup: LikeGroup.MEMBER,
+			likeGroup: LikeGroup.PROPERTY,
 		};
 
 		const modifier: number = await this.likeService.toggleLike(input);
