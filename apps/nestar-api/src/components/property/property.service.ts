@@ -187,6 +187,10 @@ export class PropertyService {
 		return await this.likeService.getFavoriteProperties(memberId, input);
 	}
 
+	public async getVisted(memberId: ObjectId, input: OrdinaryInquiry): Promise<Properties> {
+		return await this.viewService.getVistedProperties(memberId, input);
+	}
+
 	public async likeTargetProperty(memberId: ObjectId, likeRefId: ObjectId): Promise<Property> {
 		const target: Property = await this.propertyModel
 			.findOne({ _id: likeRefId, propertyStatus: PropertyStatus.ACTIVE })
