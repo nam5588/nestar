@@ -4,7 +4,6 @@ import { ValidationPipe } from '@nestjs/common';
 import { LoggingInterceptor } from './libs/interceptor/Logging.interceptor';
 import { graphqlUploadExpress } from 'graphql-upload';
 import * as express from 'express';
-// import 'tsconfig-paths/register'; // typeScript 7.0 bolganda error fix
 
 async function bootstrap() {
 	const app = await NestFactory.create(AppModule);

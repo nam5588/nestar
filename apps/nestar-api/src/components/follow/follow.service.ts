@@ -121,3 +121,6 @@ export class FollowService {
 		return result[0];
 	}
 }
+
+// followingId = _id			???
+// followerId = _id				???
