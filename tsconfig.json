@@ -10,7 +10,6 @@
 		"sourceMap": true,
 		"rootDir": "./apps",
 		"outDir": "./dist",
-		"ignoreDeprecations": "6.0", // ignore qilib turibman vaqtinchalik
 		"baseUrl": "./",
 		"incremental": true,
 		"skipLibCheck": true,
