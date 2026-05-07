@@ -60,7 +60,7 @@ export class MemberResolver {
 		@AuthMember('_id') memberId: ObjectId,
 	): Promise<Member> {
 		console.log('Mutation: updateMember');
-		delete input._id;
+		delete input._id; // havfsizlik uchun user faqat ozini update qilsin
 		return await this.memberService.updateMember(memberId, input);
 	}
 

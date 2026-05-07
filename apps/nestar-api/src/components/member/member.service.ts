@@ -175,7 +175,7 @@ export class MemberService {
 	public async updateMemberByAdmin(input: MemberUpdate): Promise<Member> {
 		const result: Member = await this.memberModel.findOneAndUpdate({ _id: input._id }, input, { new: true });
 		if (!result) throw new InternalServerErrorException(Message.UPDATE_FAILED);
-		// -- PW  hashing --
+		// -- if pw updated > PW  hashing --
 		return result;
 	}
 
