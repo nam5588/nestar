@@ -10,7 +10,7 @@ import {
 	AllPropertiesInquiry,
 	OrdinaryInquiry,
 	PropertyInput,
-	PropertyInquiry,
+	PropertiesInquiry,
 } from '../../libs/dto/property/property.input';
 import { MemberService } from '../member/member.service';
 import { PropertyStatus } from '../../libs/enums/property.enum';
@@ -95,7 +95,7 @@ export class PropertyService {
 		return result;
 	}
 
-	public async getProperties(memberId: ObjectId, input: PropertyInquiry): Promise<Properties> {
+	public async getProperties(memberId: ObjectId, input: PropertiesInquiry): Promise<Properties> {
 		const match: T = { propertyStatus: PropertyStatus.ACTIVE };
 		const sort: T = { [input.sort ?? 'createdAt']: input.direction ?? Direction.DESC };
 
@@ -152,7 +152,7 @@ export class PropertyService {
 		return result[0];
 	}
 
-	private shapeMatchQuery(match: T, input: PropertyInquiry): void {
+	private shapeMatchQuery(match: T, input: PropertiesInquiry): void {
 		const {
 			memberId,
 			locationList,
