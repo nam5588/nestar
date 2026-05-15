@@ -36,7 +36,7 @@ export class MemberResolver {
 		return await this.memberService.login(input);
 	}
 
-	@UseGuards(AuthGuard) // auth
+	@UseGuards(AuthGuard)
 	@Query(() => String)
 	public async checkAuth(@AuthMember('memberNick') memberNick: string): Promise<string> {
 		console.log('Query: checkAuth');
