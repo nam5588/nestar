@@ -80,12 +80,12 @@ export class PropertyResolver {
 
 	@UseGuards(AuthGuard)
 	@Query((returns) => Properties)
-	public async getVisted(
+	public async getVisited(
 		@Args('input') input: OrdinaryInquiry,
 		@AuthMember('_id') memberId: ObjectId,
 	): Promise<Properties> {
-		console.log('Query: getVisted');
-		return await this.propertyService.getVisted(memberId, input);
+		console.log('Query: getVisited');
+		return await this.propertyService.getVisited(memberId, input);
 	}
 
 	@Roles(MemberType.AGENT)

@@ -28,6 +28,7 @@ export class BoardArticleResolver {
 		@AuthMember('_id') memberId: ObjectId,
 	): Promise<BoardArticle> {
 		console.log('Mutation: createBoardArticle');
+		console.log('input', input);
 		return await this.boardArticleService.createBoardArticle(memberId, input);
 	}
 

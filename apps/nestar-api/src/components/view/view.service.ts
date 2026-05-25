@@ -28,7 +28,7 @@ export class ViewService {
 		return await this.viewModel.findOne(search).exec();
 	}
 
-	public async getVistedProperties(memberId: ObjectId, input: OrdinaryInquiry): Promise<Properties> {
+	public async getVisitedProperties(memberId: ObjectId, input: OrdinaryInquiry): Promise<Properties> {
 		const { page, limit } = input;
 		const match: T = { viewGroup: ViewGroup.PROPERTY, memberId: memberId };
 
